@@ -1,4 +1,5 @@
-@import url(https://fonts.googleapis.com/css?family=Nunito);@charset "UTF-8";
+@import url(https://fonts.googleapis.com/css?family=Nunito);
+@charset "UTF-8";
 
 /*!
  * Bootstrap v4.4.1 (https://getbootstrap.com/)
@@ -29,7 +30,6 @@
   --danger: #e3342f;
   --light: #f8f9fa;
   --dark: #343a40;
-  --aqua: aqua;
   --breakpoint-xs: 0;
   --breakpoint-sm: 576px;
   --breakpoint-md: 768px;
