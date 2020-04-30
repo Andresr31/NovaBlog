@@ -18,6 +18,10 @@
                                 <label>Contenido</label>
                                 <textarea readonly class="form-control" id="contenido" name="content"rows="3">{{$post->content}}</textarea>
                             </div>
+                            <div class="form-group">
+                            <a href="{{route('post.index')}}" class="btn btn-block mr-auto ml-auto btn-outline-light mt-3"> Volver</a>
+                                
+                            </div>
                         </div>
                         
                 

@@ -10,13 +10,14 @@
                        {{session('status')}}
                      </div>
                    @endif
-                    <h4 class="card-title h2 text-center">Nuevo Post</h4>
+                    <h4 class="card-title h2 text-center">Editar Post</h4>
                     
-                    <form action="{{route('post.store')}}" method="POST" class="col-md-10 my-4 text-light mr-auto ml-auto">
+                    <form action="{{route('post.update',$post)}}" method="POST" class="col-md-10 my-4 text-light mr-auto ml-auto">
                         @csrf
+                        @method('PUT')
                         @include('dashboard.post._form')
                         <div class="form-group py-3">
-                            <button type="submit" class="btn btn-block btn-outline-light">Crear</button>
+                            <button type="submit" class="btn btn-block btn-outline-light">Actualizar</button>
                         </div>
                     </form>
                         

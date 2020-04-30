@@ -54,7 +54,7 @@
 
                     
                                 <td >
-                                    <a href="{{ route('post.show',$post->id) }}"><i class="fas fa-eye icon"></i></a> | <a href="#"><i class="fas fa-edit icon"></i></a> | <a href="#"><i class="fas fa-trash-alt icon"></i></a>
+                                    <a href="{{ route('post.show',$post->id) }}"><i class="fas fa-eye icon"></i></a> | <a href="{{ route('post.edit',$post) }}"><i class="fas fa-edit icon"></i></a> | <a href="#"><i class="fas fa-trash-alt icon"></i></a>
                                 </td>
                             </tr>
                             @endforeach
