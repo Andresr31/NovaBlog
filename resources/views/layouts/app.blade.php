@@ -49,7 +49,7 @@
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{{route('post.create')}}">Crear</a>
-                                <a class="dropdown-item" href="#">Listar</a>
+                                <a class="dropdown-item" href="{{route('post.index')}}">Listar</a>
                             </div>
                         </li>
                     @endauth
