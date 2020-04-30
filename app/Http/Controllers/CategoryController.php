@@ -1,12 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Http\Requests\StoreCategoryPost;
+use App\Category;
 use Illuminate\Http\Request;
-use App\Http\Requests\StorePostPost;
-use App\Post;
 
-class PostController extends Controller
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +14,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::orderBy('created_at','desc')->paginate(5);
-        return view('dashboard.post.index',['posts'=>$posts]);
+        $categories = Category::orderBy('created_at','desc')->paginate(5);
+        return view('dashboard.category.index',['categories'=>$categories]);
     }
 
     /**
@@ -26,7 +25,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('dashboard.post.create');
+        return view('dashboard.category.create');
     }
 
     /**
@@ -35,10 +34,10 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StorePostPost $request)
+    public function store(StoreCategoryPost $request)
     {
-        Post::create($request->validated());
-        return back()->with('status','Post creado con éxito');
+        Category::create($request->validated());
+        return back()->with('status','Categoria creado con éxito');
     }
 
     /**
@@ -49,8 +48,8 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        $post = Post::findOrFail($id);
-        return view('dashboard.post.show',['post'=>$post]);
+        $category = Category::findOrFail($id);
+        return view('dashboard.category.show',['category'=>$category]);
     }
 
     /**
@@ -59,9 +58,9 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Post $post)
+    public function edit(Category $category)
     {
-        return view('dashboard.post.edit',['post'=>$post]);
+        return view('dashboard.category.edit',['category'=>$category]);
     }
 
     /**
@@ -71,10 +70,10 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(StorePostPost $request,Post $post)
+    public function update(StoreCategoryPost $request, Category $category)
     {
-        $post->update($request->validated());
-        return back()->with('status','Post modificado con éxito');
+        $category->update($request->validated());
+        return back()->with('status','Categoria modificado con éxito');
     }
 
     /**
@@ -85,8 +84,8 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        $post = Post::find($id);
-        $post->delete();
-        return back()->with('status','Post eliminado con éxito');
+        $category = Category::find($id);
+        $category->delete();
+        return back()->with('status','Categoria eliminado con éxito');
     }
 }

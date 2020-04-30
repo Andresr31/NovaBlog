@@ -12,10 +12,10 @@
               </button>
              </div>
            @endif
-            <h4 class="card-title h2 text-center py-3">Posts</h4>
+            <h4 class="card-title h2 text-center py-3">Categorias</h4>
             <div class="row col-md-9 mr-auto ml-auto">
                 <div class="col">
-                    <a href="{{ route('post.create') }}"
+                    <a href="{{ route('category.create') }}"
                         class="btn btn-outline-light btn-block">{{ __('Crear') }}</a>
                 </div>
             </div>
@@ -29,9 +29,6 @@
                                 {{ __('Titulo') }}
                             </th>
                             <th>
-                                {{ __('Posteado') }}
-                            </th>
-                            <th>
                                 {{ __('Creación') }}
                             </th>
                             <th>
@@ -42,28 +39,25 @@
                             </th>
                         </thead>
                         <tbody>
-                            @foreach($posts as $post)
+                            @foreach($categories as $category)
                                 <tr>
                                     <td>
-                                        {{$post->id}}
+                                        {{$category->id}}
                                     </td>
                                     <td>
-                                        {{$post->title}}
+                                        {{$category->title}}
                                     </td>
                                     <td>
-                                        {{$post->posted}}
+                                        {{$category->created_at->format('d-m-Y')}}
                                     </td>
                                     <td>
-                                        {{$post->created_at->format('d-m-Y')}}
-                                    </td>
-                                    <td>
-                                        {{$post->updated_at->format('d-m-Y')}}
+                                        {{$category->updated_at->format('d-m-Y')}}
                                     </td>
 
                     
                                 <td >
 
-                                        <a href="{{ route('post.show',$post->id) }}"  data-original-title="" title=""><i class="fas fa-eye icon"></i></a> | <a href="{{ route('post.edit',$post) }}"  data-original-title="" title=""><i class="fas fa-edit icon"></i></a> |<button class="btn btn-link btn-sm" type="button" data-toggle="modal" data-target="#eliminarModal"  data-id="{{$post->id}}"><i class="fas fa-trash-alt icon"></i></button>
+                                <a href="{{ route('category.show',$category->id) }}"  data-original-title="" title=""><i class="fas fa-eye icon"></i></a> | <a href="{{ route('category.edit',$category) }}"  data-original-title="" title=""><i class="fas fa-edit icon"></i></a> |<button class="btn btn-link btn-sm" type="button" data-toggle="modal" data-target="#eliminarModal"  data-id="{{$category->id}}"><i class="fas fa-trash-alt icon"></i></button>
 
                                     
                                 </td>
@@ -71,7 +65,7 @@
                             @endforeach
                         </tbody>
                     </table>
-                    {{$posts->links()}}
+                    {{$categories->links()}}
                 </div>
             
             
@@ -90,10 +84,11 @@
             </button>
         </div>
         <div class="modal-body">
-            <p>¿Seguro que desea eliminar el post seleccionado?</p>
+            <p>¿Seguro que desea eliminar la categoria seleccionado?</p>
         </div>
-        <div class="modal-footer">                                    
-            <form id="formDelete" action="{{route('post.destroy',0)}}" data-action="{{route('post.destroy',0)}}" method="POST">
+        <div class="modal-footer">
+                                                
+            <form id="formDelete" action="{{route('category.destroy',0)}}" data-action="{{route('category.destroy',0)}}" method="POST">
                 @csrf
                 @method('DELETE')
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
@@ -103,6 +98,7 @@
         </div>
     </div>
 </div>
+
 <script>
     $('#eliminarModal').on('show.bs.modal', function (event) {
       var button = $(event.relatedTarget) // Button that triggered the modal

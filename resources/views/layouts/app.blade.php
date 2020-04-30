@@ -52,6 +52,15 @@
                                 <a class="dropdown-item" href="{{route('post.index')}}">Listar</a>
                             </div>
                         </li>
+                        <li class="ml-4 nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Categorias
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{route('category.create')}}">Crear</a>
+                                <a class="dropdown-item" href="{{route('category.index')}}">Listar</a>
+                            </div>
+                        </li>
                     @endauth
                     </ul>
                     <!-- Right Side Of Navbar -->

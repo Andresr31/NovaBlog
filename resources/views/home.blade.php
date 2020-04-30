@@ -18,7 +18,7 @@
                 <div class="card-body">
                 <h4 class="card-title text-center h2">Categorias</h4>
                 <p class="card-text text-center">Gestiona categorias</p>
-                <a href="#" class="btn btn-outline-secondary btn-block">Ver</a>
+                <a href="{{route('category.index')}}" class="btn btn-outline-secondary btn-block">Ver</a>
                 </div>
             </div>
             </div>
