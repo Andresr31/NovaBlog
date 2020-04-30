@@ -4,6 +4,8 @@
     <div class="back">
         <div class="container py-4">
             @include('dashboard.partials.validation-error')
+            @if (session('status')=='succes')
+            @endif
             <div class="col-md-9 mr-auto ml-auto">
                 <div class="card-body bg-dark card-dark">
                     <h4 class="card-title h2 text-center">Nuevo Post</h4>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Request\StorePostPost;
 
 class PostController extends Controller
 {
@@ -34,12 +35,11 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'title' => 'required|min:5|max:120',
-            'url_clean' => 'required|min:5|max:120',
-            'content' => 'required|min:5|max:120',
-        ]);
+        Post::create($request->validated());
+        //return back()->with('status','success');->withSuccess('Task Created Successfully!');
         //
+        return back()->with('status','success');
+        //return redirect('status')->with('success', 'Post creado exitosamente');
     }
 
     /**
