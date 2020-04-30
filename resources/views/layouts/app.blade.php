@@ -42,9 +42,18 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-
+                    @auth
+                    <li class="ml-4 nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Post
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{route('post.create')}}">Crear</a>
+                                <a class="dropdown-item" href="#">Listar</a>
+                            </div>
+                        </li>
+                    @endauth
                     </ul>
-
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
@@ -78,6 +87,8 @@
                                     </form>
                                 </div>
                             </li>
+
+
                             
                         @endguest
                     </ul>

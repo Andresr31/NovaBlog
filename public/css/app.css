@@ -56,8 +56,14 @@ html {
   color: aqua;
 }
 .welcome{
-  background-color: aqua;
+  background-color: rgba(87, 255, 255, 0.74);
 }
+
+.back{
+  background-color: rgba(144, 255, 255, 0.452);
+}
+
+
 
 h4
 {
