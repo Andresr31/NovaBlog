@@ -4,6 +4,14 @@
 <div class="back">
     <div class="container py-4">
         <div class="card bg-dark col-md-9 mr-auto ml-auto">
+            @if (session('status'))
+            <div class="alert alert-success my-2" role="alert">
+               {{session('status')}}
+               <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+             </div>
+           @endif
             <h4 class="card-title h2 text-center py-3">Posts</h4>
             <div class="row col-md-9 mr-auto ml-auto">
                 <div class="col">
@@ -54,7 +62,10 @@
 
                     
                                 <td >
-                                    <a href="{{ route('post.show',$post->id) }}"><i class="fas fa-eye icon"></i></a> | <a href="{{ route('post.edit',$post) }}"><i class="fas fa-edit icon"></i></a> | <a href="#"><i class="fas fa-trash-alt icon"></i></a>
+
+                                        <a href="{{ route('post.show',$post->id) }}"  data-original-title="" title=""><i class="fas fa-eye icon"></i></a> | <a href="{{ route('post.edit',$post) }}"  data-original-title="" title=""><i class="fas fa-edit icon"></i></a> |<button id="eliminar" class="btn btn-link btn-sm"type="button" data-toggle="modal" data-target="#errorModal"><i class="fas fa-trash-alt icon"></i></button>
+
+                                    
                                 </td>
                             </tr>
                             @endforeach
@@ -69,5 +80,36 @@
     </div>
 </div>
 
+<div id="errorModal"class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title">Eliminar post</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <p>¿Seguro que desea eliminar el post seleccionado?</p>
+        </div>
+        <div class="modal-footer">
+                                                
+            <form action="{{route('post.destroy',$post)}}" method="POST">
+                @csrf
+                @method('DELETE')
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            <button type="submit" class="btn btn-danger">Eliminar</button>
+        </form>
+        </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $('#errorModal').on('shown.bs.modal', function () {
+        $('#eliminar').trigger('focus')
+    })
+
+</script>
 
 @endsection
