@@ -1,3 +1,4 @@
+
 <div class="form-group">
     <label>Titulo</label>
 <input type="text" class="form-control" id="titulo" name="title" value="{{old('title',$post->title ?? '')}}" >
@@ -8,10 +9,22 @@
 
 </div>
 <div class="form-group">
-    <label>Contenido</label>
-    <textarea class="form-control" id="contenido" name="content"rows="3">{{old('content',$post->content ?? '')}}</textarea>
-    {{-- @error('content')
-        <small class="text-danger">{{$message}}</small>
-    @enderror --}}
+    <label for="category_id">Categoria</label>
+    <select name="category_id" class="form-control" id="category_id">
+        @foreach ($categories as $category)
+
+            <option value="{{$category->id}}">{{$category->title}}</option>
+            
+        @endforeach
+
+    </select>
 </div>
 
+<div class="form-group text-dark">     
+    <label for="contenido" class="text-light">Contenido</label>     
+    <textarea class="form-control" name="content" id="contenido" rows="3" >
+        {{old('content',$post->content  ?? '')}}</textarea>     
+        @error('content')         
+            <small class="text-danger">{{$message}}</small>
+        @enderror 
+</div>

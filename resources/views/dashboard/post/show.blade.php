@@ -15,6 +15,10 @@
                                 <input readonly type="text" class="form-control" id="url" name="url_clean" value="{{$post->url_clean}}" >
                             </div>
                             <div class="form-group">
+                                <label>Categoria</label>
+                                <input readonly type="text" class="form-control" id="url" name="url_clean" value="{{$category->title}}" >
+                            </div>
+                            <div readonly class="form-group text-dark disable">
                                 <label>Contenido</label>
                                 <textarea readonly class="form-control" id="contenido" name="content"rows="3">{{$post->content}}</textarea>
                             </div>

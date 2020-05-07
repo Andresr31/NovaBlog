@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\StorePostPost;
 use App\Post;
+use App\Category;
 
 class PostController extends Controller
 {
@@ -26,7 +27,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('dashboard.post.create');
+        $categories = Category::all();
+        return view('dashboard.post.create',['categories'=>$categories]);
     }
 
     /**
@@ -37,6 +39,7 @@ class PostController extends Controller
      */
     public function store(StorePostPost $request)
     {
+        // dd($request->validated());
         Post::create($request->validated());
         return back()->with('status','Post creado con éxito');
     }
@@ -50,7 +53,8 @@ class PostController extends Controller
     public function show($id)
     {
         $post = Post::findOrFail($id);
-        return view('dashboard.post.show',['post'=>$post]);
+        $category = Category::findOrFail($post->category_id);
+        return view('dashboard.post.show',['post'=>$post,'category'=>$category]);
     }
 
     /**
@@ -61,7 +65,8 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        return view('dashboard.post.edit',['post'=>$post]);
+        $categories = Category::all();
+        return view('dashboard.post.edit',['post'=>$post, 'categories'=>$categories]);
     }
 
     /**
